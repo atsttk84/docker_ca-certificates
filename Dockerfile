@@ -1,6 +1,6 @@
-FROM alpine
-RUN sed -i "s|/v[0-9]*.[0-9]*/|/edge/|g" /etc/apk/repositories\
- && apk add --no-cache openssl
+FROM alpine:latest
+RUN apk add --no-cache openssl perl
 
-COPY run.sh /run.sh
-CMD sh /run.sh
+VOLUME /mnt
+WORKDIR /mnt
+CMD sh /mnt/run.sh
